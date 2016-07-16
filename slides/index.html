@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Recent work on OpenWebRX and csdr</title>
+
+		<meta name="description" content="SDRA-2016 Presentation on OpenWebRX">
+		<meta name="author" content="András Retzler">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+		<link rel="stylesheet" href="lib/font/dejavusansmono_book_macroman/stylesheet.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		<style>
+		 .reveal section img.noborder {
+			border:none;
+			background: none;
+			box-shadow: none;
+		}
+		.reveal .slides section .fragment.fade-in-reldown { opacity: 0; visibility: hidden; top: -100px; relative: relative; }
+		.reveal .slides section .fragment.fade-in-reldown.visible { opacity: 1; visibility: visible; top: 0px; position: relative; }
+		.reveal .slides section .fragment.fade-in-up { opacity: 0; visibility: hidden; top: 100px; position: absolute; }
+		.reveal .slides section .fragment.fade-in-up.visible { opacity: 1; visibility: visible; top: 0px; position: absolute; }
+		.above-each-other {  width: 80%; position: absolute; top:0; left: 95px; }
+		.80p { width: 805; }
+		.reveal .slides section .fragment.go-right { position: relative; left: -100px; visibility: visible; opacity: 1;}
+		.reveal .slides section .fragment.go-right.visible { position: relative; left: 0px; }
+		.reveal .slides section .fragment.go-left { position: relative; left: 255px; visibility: visible; opacity: 1;}
+		.reveal .slides section .fragment.go-left.visible { position: relative; left: 0px; }
+		.code-above-each-other { width: 100%; position: absolute; top: 0px; left: 0px; }
+		.code-above-each-other pre { width: 100%; }
+		p.license-reference { color: #aaa; font-size: 12pt; }
+		.license-reference a { color: #888; }
+
+		.reveal pre { font-family: dejavu_sans_monobook; }
+		.reveal code { font-family: dejavu_sans_monobook; }
+
+		.reveal a { color: #184796; }
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" >
+				<section data-background="bgtest1notree.jpg">
+					<img src="fr2-slide-2.png" class="noborder" style="position: relative; top: 20px;">
+				</section>
+				<!--<section data-background="bglake.jpg">
+					<img src="fr2-old-owx-screenshot.png" class="noborder" style="width: 90%;" />
+				</section>-->
+				<section data-background="bglake.jpg" style="width: 114%; left: -7%;">
+					<video autoplay controls>
+						<source data-src="clip1.webm" type="video/webm" />
+					</video>
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade-in">
+					<div style="text-align: left; padding-left: 50px;">
+					<span><img class="noborder" src="bp1.png" style="width: 159px; border-style: none;"/><h1 style="font-size: 40pt; display: inline; position: relative; top: -75px; left: 25px;">Audio compression</h1><br /></span>
+					<span class="fragment fade-up"><img class="noborder" src="bp2.png" style="width: 159px; border-style: none;"/><h1 style="font-size: 40pt; display: inline; position: relative; top: -75px; left: 25px;">DSP acceleration</h1><br /></span>
+					<span class="fragment fade-up"><img class="noborder" src="bp3.png" style="width: 159px; border-style: none;"/><h1 style="font-size: 40pt; display: inline; position: relative; top: -75px; left: 25px;">Website</h1></span>
+					</div>
+				</section>
+				<section data-background="bglake.jpg" >
+					<h1 data-smallcaps style="font-size: 50pt;">Audio compression: ADPCM</h1>
+					<img style="background-color: White; border-style: none; width: 80%;" src="sdrjs-bwchange-2.png" />
+				</section>
+				<section data-background="bglake.jpg" >
+					<h1 data-smallcaps style="font-size: 50pt;">Website for receivers</h1>
+					<img class="noborder" style="width: 63%;" src="sdrhu3.png" />
+				</section>
+				<section data-background="bglake.jpg" >
+					<img class="noborder" style="width: 100%;" src="sdrhumap.png" />
+				</section>
+				<section data-background="bglake.jpg" >
+					<img class="noborder" style="width: 100%;" src="sdrhureg.png" />
+				</section>
+				<!--<section data-background="bglake.jpg" >
+					<img class="noborder" style="width: 100%;" src="openwebrx-hamsat.png" />
+				</section>-->
+				<section data-background="bglake.jpg" >
+					<h1 data-smallcaps style="font-size: 50pt;">DSP acceleration</h1>
+				</section>
+				<section data-background="bglake.jpg" >
+					<h1 data-smallcaps style="font-size: 59pt;">csdr</h1>
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade">
+					<h1 data-smallcaps style="font-size: 59pt;">csdr</h1>
+					<pre style="width: 100%; margin-top: 40px;"><code>#!/bin/bash
+rtl_sdr -s 2400000 -f 89300000 -g 20 -
+
+
+
+
+
+					</code></pre>
+					<img class="noborder" src="csdr-cmd-1.png" style="width: 100%; position: relative; left: 45px;" />
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade">
+					<h1 data-smallcaps style="font-size: 59pt;">csdr</h1>
+					<pre style="width: 100%; margin-top: 40px;"><code>#!/bin/bash
+rtl_sdr -s 2400000 -f 89300000 -g 20 - | csdr convert_u8_f
+
+
+
+
+
+					</code></pre>
+					<img class="noborder" src="csdr-cmd-2.png" style="width: 100%; position: relative; left: 45px;" />
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade">
+					<h1 data-smallcaps style="font-size: 59pt;">csdr</h1>
+					<pre style="width: 100%; margin-top: 40px;"><code>#!/bin/bash
+rtl_sdr -s 2400000 -f 89300000 -g 20 - | csdr convert_u8_f | \
+csdr shift_addition_cc -0.085
+
+
+
+
+					</code></pre>
+					<img class="noborder" src="csdr-cmd-3.png" style="width: 100%; position: relative; left: 45px;" />
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade">
+					<h1 data-smallcaps style="font-size: 59pt;">csdr</h1>
+					<pre style="width: 100%; margin-top: 40px;"><code>#!/bin/bash
+rtl_sdr -s 2400000 -f 89300000 -g 20 - | csdr convert_u8_f | \
+csdr shift_addition_cc -0.085 | csdr fir_decimate_cc 10 0.05 HAMMING
+
+
+
+
+					</code></pre>
+					<img class="noborder" src="csdr-cmd-4.png" style="width: 100%; position: relative; left: 45px;" />
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade">
+					<h1 data-smallcaps style="font-size: 59pt;">csdr</h1>
+					<pre style="width: 100%; margin-top: 40px;"><code>#!/bin/bash
+rtl_sdr -s 2400000 -f 89300000 -g 20 - | csdr convert_u8_f | \
+csdr shift_addition_cc -0.085 | csdr fir_decimate_cc 10 0.05 HAMMING | \
+csdr fmdemod_quadri_cf
+
+
+
+					</code></pre>
+					<img class="noborder" src="csdr-cmd-5.png" style="width: 100%; position: relative; left: 45px;" />
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade-in">
+					<h1 data-smallcaps style="font-size: 59pt;">csdr</h1>
+					<pre style="width: 100%; margin-top: 40px;"><code>#!/bin/bash
+rtl_sdr -s 2400000 -f 89300000 -g 20 - | csdr convert_u8_f | \
+csdr shift_addition_cc -0.085 | csdr fir_decimate_cc 10 0.05 HAMMING | \
+csdr fmdemod_quadri_cf | csdr fractional_decimator_ff 5 | \
+csdr deemphasis_wfm_ff 48000 50e-6 | csdr convert_f_s16 | \
+mplayer -rawaudio samplesize=2:channels=1:rate=48000 \
+-cache 1024 -quiet -demuxer rawaudio -
+					</code></pre>
+					<img class="noborder" src="csdr-cmd-7.png" style="width: 100%;" />
+				</section>
+
+
+
+				<section data-background="bglake.jpg" >
+					<h1 data-smallcaps style="font-size: 50pt;">Signal path</h1>
+					<img class="noborder" src="highbw3.png" />
+				</section>
+				<section data-background="bglake.jpg" >
+					<h1 data-smallcaps style="font-size: 50pt;">Digital downconverter</h1>
+				</section>
+				<section data-transition="fade-out">
+					<img class="noborder" src="ddc-1-b.png" style="height: 659px;" />
+				</section>
+				<section data-transition="fade-in">
+					<img class="noborder" src="ddc2.png" style="height: 659px;" />
+				</section>
+				<section data-transition="fade-in">
+					<img class="noborder" src="ddc2highlight.png" style="height: 659px;" />
+				</section>
+				<!--<section>
+					<img class="noborder" src="ddc-fg-1.png" />
+				</section>-->
+				<!--<section data-background="bglake.jpg" data-transition="fade-in">
+					<h1 data-smallcaps style="font-size: 50pt;">ADPCM codec</h1>
+						<div style="font-family: monospace;">csdr encode_ima_adpcm_s16_u8</div><br/>
+						<div style="font-family: monospace;">csdr decode_ima_adpcm_u8_s16</div>
+				</section>-->
+				<!--<section data-background="bglake.jpg" data-transition="fade-in">
+					<span data-smallcaps style="font-size: 50pt; font-family: monospace;">csdr fir_decimate_cc</span>
+				</section>-->
+				<section>
+					<img src="ddc-select.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">Simple C version</div>
+					<img src="firdec-source.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">Simple C version</div>
+					<img src="n-firdec-1.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">Simple C version</div>
+					<img src="n-firdec-2.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">Simple C version</div>
+					<img src="n-firdec-3.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<img src="firdec-stepscount.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<div style="font-size: 40pt; color: #777;">(Inline assembly)</span>
+					<img src="firasm-source.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<img src="n-firasm-1.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<img src="n-firasm-2.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<img src="n-firasm-3.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<img src="n-firasm-4.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<img src="n-firasm-5.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<img src="n-firasm-7.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">NEON SIMD</div>
+					<img src="n-firasm-8.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<img src="firasm-stepcount.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">GPGPU (CUDA)</div>
+					<img src="firgpu-source.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">GPGPU (CUDA)</div>
+					<img src="n-firgpu-1.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">GPGPU (CUDA)</div>
+					<img src="n-firgpu-2.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<div style="font-size: 50pt;">GPGPU (CUDA)</div>
+					<img src="n-firgpu-3.png" class="noborder" />
+				</section>
+				<section data-transition="fade-in">
+					<span style="font-size: 73pt;">2122ms &rarr; 113ms</span><br/><br/>
+					<span style="font-size: 73pt;">×18.7 speedup</span>
+				</section>
+				<section data-transition="fade-in">
+					<span style="font-size: 45pt;">Mark Borgerding, &quot;Turning Overlap-Save into a Multiband
+Mixing, Downsampling Filter Bank&quot;,<br /><em>IEEE Signal Processing Magazine</em>, March 2006</span><br/><br/>
+				</section>
+				<section data-transition="fade-in">
+					<img src="gitbranch1b.png" class="noborder" style="width: 100%;"/>
+				</section>
+				<section data-transition="fade-in">
+					<img src="gitbranch2b.png" class="noborder" style="width: 100%;"/>
+				</section>
+				<section data-transition="fade-in"> <img src="fastddc-1.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-2.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-3.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-4.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-5.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-6.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-7.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-8.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-9.png"  class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-10.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-11.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-12.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-13.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-14.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-15.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-16.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-17.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-18.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-19.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-20.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-21.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-22.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-23.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-24.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-25.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-26.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-27.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-28.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-29.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-30.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-31.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-32.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-33.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-34.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-35.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-36.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-37.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-38.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-39.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-40.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="fade-in"> <img src="fastddc-41.png" class="noborder" style="width: 100%; position: relative; top: -30px;"/> </section>
+				<section data-transition="">
+					<span style="font-size: 73pt;">Various other things</span>
+				</section>
+				<section data-background="bglake.jpg" >
+					<div style="text-align: left; padding-left: 50px;">
+					<span class=""><img class="noborder" src="bp4.png" style="width: 159px; border-style: none;"/><h1 style="font-size: 40pt; display: inline; position: relative; top: -75px; left: 25px;">Digital modes</h1><br /></span>
+					<span class="fragment fade-right"><img class="noborder" src="bp5.png" style="width: 159px; border-style: none;"/><h1 style="font-size: 40pt; display: inline; position: relative; top: -75px; left: 25px;">Hardware support</h1><br /></span>
+					<span class="fragment fade-right"><img class="noborder" src="bp7.png" style="width: 159px; border-style: none;"/><h1 style="font-size: 40pt; display: inline; position: relative; top: -75px; left: 25px;">qtcsdr</h1></span>
+					</div>
+				</section>
+				<section data-background="bglake.jpg">
+					<h1 data-smallcaps style="font-size: 50pt;">Digital modes: RTTY</h1>
+					<img src="csdr-rtty.png" class="noborder"/>
+				</section>
+				<section data-background="bglake.jpg">
+					<h1 data-smallcaps style="font-size: 50pt;">Hardware support</h1>
+					<!--<img src="config_webrx_start.png" class="noborder" style="width: 100%;"/>-->
+					<span style="font-size: 40pt;">HackRF, AFEDRI SDR, SDRPlay,<br /> gr-osmosdr, etc.</span>
+				</section>
+				<section data-background="bglake.jpg">
+					<h1>hpsdrtool</h1>
+					<pre><code class="nohighlight">➜  ~ hpsdrtool
+hpsdrtool &lt;hpsdr_metis_ip&gt; [--freq &lt;freq_in_hz&gt;]
+	[--preamp] [--no-iq-output]
+</code></pre>
+					<img class="fragment noborder" src="hpsdr-hw.jpg" style="height: 400px;"/>
+					<!-- Metis & Mercury -->
+				</section>
+				<section data-background="bglake.jpg">
+					<img src="hpsdr1.png" class="noborder" style="width: 100%;"/>
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade-in">
+					<img src="hpsdr2.png" class="noborder" style="width: 100%;"/>
+				</section>
+				<section data-background="bglake.jpg">
+					<a href="https://github.com/ha7ilm/hpsdrtool" style="text-shadow: #fff 0px 0px 15px; font-size: 40pt;">https://github.com/ha7ilm/hpsdrtool</a>
+				</section>
+				<section data-background="bglake.jpg">
+					<h1 style="font-size: 70pt; display: inline; position: relative; top: -75px; left: 25px;">qtcsdr</h1>
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade-in">
+					<img class="noborder" src="pifm1.png" style="width: 100%;"/>
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade-in">
+					<img class="noborder" src="pifm2.png" style="width: 100%;"/>
+				</section>
+				<section data-background="bglake.jpg" data-transition="fade-in">
+					<h1 style="font-size: 50pt;">Software (CLI)</h1>
+					<ul>
+						<li><b>WsprryPi</b>: a WSPR beacon<br />
+							<a href="https://github.com/JamesP6000/WsprryPi" style="text-shadow: #fff 0px 0px 15px; font-size: 25pt;">https://github.com/JamesP6000/WsprryPi</a><br/><br/>
+						</li>
+						<li><b>RPITX</b>: transmit an I/Q signal<br />
+							<a href="https://github.com/F5OEO/rpitx" style="text-shadow: #fff 0px 0px 15px; font-size: 25pt;">https://github.com/F5OEO/rpitx</a>
+						</li>
+					</ul>
+				</section>
+
+				<section data-background="bglake.jpg">
+					<h1 style="font-size: 50pt;">QRPi</h1>
+					<a href="https://www.tapr.org/kits_20M-wspr-pi.html" style="text-shadow: #fff 0px 0px 15px; font-size: 25pt;">https://www.tapr.org/kits_20M-wspr-pi.html</a>
+					<img class="noborder" src="qrpi.jpg" style="width: 100%;"/>
+				</section>
+
+			</section>
+			<section data-background="bglake.jpg">
+				<h1 style="font-size: 50pt;">qtcsdr</h1>
+				<span style="font-size: 40pt;">RTL-SDR + RPITX = transceiver</span><br/><br/>
+				<img class="noborder" src="qtcsdr-1.png" />
+			</section>
+			<section data-transition="fade-in">
+				<h1 style="font-size: 50pt;">qtcsdr (RX)</h1>
+				<img class="noborder" src="rpi-qtcsdr-2.png" style="width: 100%;"/>
+			</section>
+			<section data-transition="fade-in">
+				<h1 style="font-size: 50pt;">qtcsdr (TX)</h1>
+				<img class="noborder" src="rpi-qtcsdr-1.png" style="width: 100%;"/>
+			</section>
+			<section data-transition="fade-in">
+				<h1 style="font-size: 70pt;">qtcsdr</h1>
+				<a href="https://github.com/ha7ilm/qtcsdr" style="text-shadow: #fff 0px 0px 15px; font-size: 40pt;">https://github.com/ha7ilm/qtcsdr</a><br/><br/>
+				<!--<span style="font-size: 40pt;">&lt; 500 lines</span><br/><br/>-->
+				<img class="noborder" src="qtcsdr-1.png" />
+			</section>
+
+				<!--<section  data-background="background.png">
+					<h1 data-smallcaps>Acknowledgement</h1><br />
+					<ul>
+						<p style="font-size: 53pt; font-weight: bold; text-shadow: 0px 0px 10px #fff;" >János Selmeczi, PhD (HA5FT)</p>
+						<p style="font-size: 53pt; font-weight: bold; text-shadow: 0px 0px 10px #fff;" >Péter Horváth, PhD (HA5CQA)</p>
+					</ul>
+				</section>-->
+				<section  data-background="bglake.jpg" data-transition="fade-in">
+					<img class="noborder" src="sdrhu-logo-main-wb.png">
+				</section>
+			</div>
+
+		</div>
+
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				zoomKey: 'ctrl',
+				viewDistance: 10,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script>
+			Reveal.addEventListener( 'ready', function( event ) {
+				$("*[data-smallcaps]").each(function(x,y){
+					$(y).html( $(y).text().replace(/[A-Z]+/g,function(x){return "<span style='font-size: 125%;'>"+x+"</span>";} ));
+				});
+			} );
+
+			$("video").click(function(e){
+			    this.currentTime = 0; this.play(); console.log("video::clicked");
+			});
+
+		</script>
+
+	</body>
+</html>
