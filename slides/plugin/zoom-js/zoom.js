@@ -273,6 +273,3 @@ var zoom = (function(){
 	}
 
 })();
-
-
-

@@ -1,0 +1,3 @@
+[submodule "slides/plugin/talkvideo"]
+	path = slides/plugin/talkvideo
+	url = https://github.com/ha7ilm/RevealTalkVideo
